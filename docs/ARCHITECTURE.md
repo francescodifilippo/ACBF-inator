@@ -30,7 +30,8 @@ Mihon maintainers declined the proposed upstream generic Reader Plugin API on sh
 ## Security and legal constraints
 - Use rights-cleared pages for public examples, CI fixtures and releases.
 - Loading untrusted archives/XML must be sandboxed/validated against path traversal, XML entity attacks, zip bombs and oversized images.
-- Do not make the optional ChatGPT authentication into a multi-user inference gateway using a single person's subscription.
+- The product scope consists of an open-source local desktop application, a self-hosted server under the user's control, and a future ACBF-native reader. **No public inference service, ChatGPT subscription pooling or resale is planned.**
+- The server can ingest, produce, store and publish ACBF using offline/local components; ChatGPT login is never a prerequisite for ACBF consumption or server publication. SIWC is an optional, separately authorized desktop integration. Do not assume server-side SIWC eligibility until checked against the applicable documentation.
 - Declare third-party licenses and avoid claiming a specific model is efficient until measured.
 
 ## Planned work
