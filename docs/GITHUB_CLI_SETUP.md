@@ -14,7 +14,7 @@ Because the connected GitHub integration does not expose user-owned GitHub Proje
    ```powershell
    git clone https://github.com/francescodifilippo/ACBF-inator.git
    cd ACBF-inator
-   # Use the scripts from PR #16 until merged, otherwise checkout the PR branch.
+   # While the script PR is open, check out its branch first: git switch chore/github-cli-bootstrap
    gh auth status
    pwsh -File ./scripts/bootstrap-github.ps1
    ```
