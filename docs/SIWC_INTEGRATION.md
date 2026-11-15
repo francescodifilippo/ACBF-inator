@@ -24,9 +24,9 @@ Open-source local clients can use the **dynamic registration** OAuth flow; a sta
 
 ## Guardrails
 - No ChatGPT password/cookie collection; no token in Git, logs, remote hosting or analytics.
-- No credential pooling, re-selling, use of someone else's account, or unrestricted API proxy.
-- Background work needs explicit user consent. A user-controlled remote VM may have a supported path, but multi-user server workloads require separate design, consent and terms review.
-- Optional standard API-key usage is a **separate** integration and billing model, not equivalent to subscription/plan usage.
+- Desktop sign-in is **optional** and tied to the individual user. No shared credentials or secondary service is part of this design.
+- Background work needs explicit user consent and compliance with applicable SIWC limits.
+- The separate self-hosted ACBF server remains usable without SIWC or a paid OpenAI API; any server-side sign-in proposal must first be assessed against current rules.
 
 ## Acceptance test
 Local app can complete dynamic sign-in and user consent, discover models, send an eligible test request and stream it to completion. Document decline, logout, expired token and model availability cases.
