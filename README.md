@@ -61,7 +61,7 @@ Start with [the project charter and roadmap](https://github.com/francescodifilip
 
 ## OpenAI authentication
 
-Sign in with ChatGPT for open-source local apps uses a dynamic OAuth registration and user consent; no general-purpose API key should be embedded in the app. Follow the [official OSS sign-in guide](https://developers.openai.com/siwc/token-sharing-open-source) and [terms](https://openai.com/policies/sign-in-with-chatgpt-terms/). ChatGPT plan usage is not unlimited or shareable between users. Hosted/multi-user plans require separate legal/product evaluation.
+Sign in with ChatGPT for open-source local apps uses a dynamic OAuth registration and user consent; no general-purpose API key should be embedded in the app. Follow the [official OSS sign-in guide](https://developers.openai.com/siwc/token-sharing-open-source) and [terms](https://openai.com/policies/sign-in-with-chatgpt-terms/). This project does **not** plan a public inference service, subscription sharing or resale. The desktop application may optionally use each user's own ChatGPT authorization where supported. The self-hosted ACBF server does not depend on ChatGPT authentication; any future use of SIWC from a personal server runtime requires verification against the applicable eligibility and runtime rules.
 
 ## License and contribution
 
