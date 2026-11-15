@@ -12,7 +12,7 @@ Status: researched; no application registration or token issuance has been perfo
 ## Important distinction
 Open-source local clients can use the **dynamic registration** OAuth flow; a static developer API key or advance partner registration is not required for that path. User authorization occurs from within the running app. The issued `client_id` belongs to the user/workspace registration and must be persisted for reauth. Eligibility, scope, model availability and usage caps are account-dependent.
 
-Commercial or remotely hosted applications follow a separate access path; do **not** assume a cloud multi-user ACBF-inator Server may use one user's subscription.
+**Project scope:** ACBF-inator is a locally run open-source desktop app plus an optional **self-hosted, user-controlled** ACBF processing/publishing server. No public inference service, multi-user sharing of ChatGPT subscriptions, or resale is planned. SIWC is being evaluated for the desktop app; ACBF-inator Server can work entirely without OpenAI. If an individual user later wants SIWC from their own server runtime, verify separately that the exact deployment mode and authorization comply with the then-current program terms before implementing it.
 
 ## Local application flow
 1. App generates and stores a stable opaque `ext_agent_host_id` per installation (prefer JWK thumbprint URI; UUID-based `urn:uuid:...` also supported).
