@@ -74,7 +74,7 @@ if ($project.Count -eq 0) {
 }
 
 # Linking may already exist on reruns.
-& gh project link $projectNumber --owner $owner --repo "ACBF-inator" 2>$null | Out-Null
+& gh project link $projectNumber --owner $owner --repo "ACBF-inator" | Out-Null
 if ($LASTEXITCODE -ne 0) {
     Write-Host "  Project link may already exist; inspect it in the GitHub UI."
 }
@@ -98,7 +98,7 @@ foreach ($field in $fieldSpecs) {
 
 foreach ($n in (1..13) + @(15)) {
     $issueUrl = "https://github.com/$repo/issues/$n"
-    & gh project item-add $projectNumber --owner $owner --url $issueUrl 2>$null | Out-Null
+    & gh project item-add $projectNumber --owner $owner --url $issueUrl | Out-Null
     if ($LASTEXITCODE -ne 0) {
         Write-Host "  Item #$n already present or could not be added; check the project."
     }
