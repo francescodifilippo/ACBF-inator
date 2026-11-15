@@ -48,6 +48,13 @@ The ACBF core must not depend on one reader, OS or content server.
 
 Standard ACBF remains the durable interchange format. Rendered translations may be served to legacy clients as an optional derived view; source images remain intact.
 
+## Project documents
+
+- [Architecture and decisions](docs/ARCHITECTURE.md)
+- [OCR alternatives and evaluation](docs/OCR_RESEARCH.md)
+- [Sign in with ChatGPT integration](docs/SIWC_INTEGRATION.md)
+- [Two ChatGPT test prompts](docs/EXPERIMENT_PROMPTS.md)
+
 ## Project management
 
 Start with [the project charter and roadmap](https://github.com/francescodifilippo/ACBF-inator/issues/1) and the related GitHub issues. Decisions, metrics, accepted constraints and integration contracts should be committed to docs along with the code. Project boards and milestones may be added when available.
