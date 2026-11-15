@@ -8,7 +8,7 @@
 $ErrorActionPreference = "Stop"
 $repo = "francescodifilippo/ACBF-inator"
 $owner = "francescodifilippo"
-$projectTitle = "ACBF-inator — Development"
+$projectTitle = "ACBF-inator - Development"
 
 if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
     throw "GitHub CLI (gh) is missing. Install from https://cli.github.com/ then run gh auth login."
@@ -18,22 +18,22 @@ if ($LASTEXITCODE -ne 0) {
     throw "Authenticate first: gh auth login"
 }
 
-Write-Host "1/5 — Setting repository description and topics"
+Write-Host "1/5 - Setting repository description and topics"
 $description = "Open-source comic OCR and ACBF authoring toolkit for multilingual text layers, accessibility, and reusable translations."
 $topics = "acbf,comics,manga,ocr,comic-translation,accessibility,multilingual,cbz,text-to-speech,open-source"
 & gh repo edit $repo --description $description --add-topic $topics --enable-projects
 if ($LASTEXITCODE -ne 0) { throw "Could not update repository metadata" }
 
 $milestoneSpecs = @(
-    @{ Title="M0 — Specification & benchmark baseline"; Description="ACBF schema, rights-cleared corpus, licensing, security and CI baseline"; Issues=@(1,2,13,15) },
-    @{ Title="M1 — ACBF Core"; Description="ACBF read/write validation and CBZ/CBR/image import round trips"; Issues=@(3,4) },
-    @{ Title="M2 — OCR & page understanding"; Description="Balloon/panel detection, reading order, OCR model benchmarks and Jev review"; Issues=@(5,6,7) },
-    @{ Title="M3 — Multilingual & authentication"; Description="Language layers and optional locally authorized SIWC desktop integration"; Issues=@(8,9) },
-    @{ Title="M4 — Desktop beta"; Description="Batch CLI and UI, review/edit workflow, safe packaging"; Issues=@(10) },
-    @{ Title="M5 — Integrations"; Description="Self-hosted ACBF publication/adapters and derived Mihon reader"; Issues=@(11,12) }
+    @{ Title="M0 - Specification & benchmark baseline"; Description="ACBF schema, rights-cleared corpus, licensing, security and CI baseline"; Issues=@(1,2,13,15) },
+    @{ Title="M1 - ACBF Core"; Description="ACBF read/write validation and CBZ/CBR/image import round trips"; Issues=@(3,4) },
+    @{ Title="M2 - OCR & page understanding"; Description="Balloon/panel detection, reading order, OCR model benchmarks and Jev review"; Issues=@(5,6,7) },
+    @{ Title="M3 - Multilingual & authentication"; Description="Language layers and optional locally authorized SIWC desktop integration"; Issues=@(8,9) },
+    @{ Title="M4 - Desktop beta"; Description="Batch CLI and UI, review/edit workflow, safe packaging"; Issues=@(10) },
+    @{ Title="M5 - Integrations"; Description="Self-hosted ACBF publication/adapters and derived Mihon reader"; Issues=@(11,12) }
 )
 
-Write-Host "2/5 — Creating missing release milestones"
+Write-Host "2/5 - Creating missing release milestones"
 $existingMilestones = @(& gh api "repos/$repo/milestones?state=all&per_page=100" | ConvertFrom-Json)
 if ($LASTEXITCODE -ne 0) { throw "Cannot list milestones" }
 foreach ($spec in $milestoneSpecs) {
@@ -47,7 +47,7 @@ foreach ($spec in $milestoneSpecs) {
     }
 }
 
-Write-Host "3/5 — Assigning milestones to existing issues"
+Write-Host "3/5 - Assigning milestones to existing issues"
 foreach ($spec in $milestoneSpecs) {
     foreach ($issueNo in $spec.Issues) {
         & gh issue edit $issueNo -R $repo --milestone $spec.Title | Out-Null
@@ -56,10 +56,10 @@ foreach ($spec in $milestoneSpecs) {
     }
 }
 
-Write-Host "4/5 — Locating or creating GitHub Project"
+Write-Host "4/5 - Locating or creating GitHub Project"
 & gh project list --owner $owner --format json | Out-Null
 if ($LASTEXITCODE -ne 0) {
-    throw "Project permissions missing. Run: gh auth refresh -s project ; then retry."
+    throw "Project permissions missing. Run: gh auth refresh -s project; then retry."
 }
 $existingProjects = & gh project list --owner $owner --format json | ConvertFrom-Json
 $project = @($existingProjects.projects | Where-Object { $_.title -eq $projectTitle } | Select-Object -First 1)
@@ -79,7 +79,7 @@ if ($LASTEXITCODE -ne 0) {
     Write-Host "  Project link may already exist; inspect it in the GitHub UI."
 }
 
-Write-Host "5/5 — Creating optional project fields and adding issue items"
+Write-Host "5/5 - Creating optional project fields and adding issue items"
 $fieldResult = & gh project field-list $projectNumber --owner $owner --format json | ConvertFrom-Json
 if ($LASTEXITCODE -ne 0) { throw "Could not list project fields" }
 $fields = @($fieldResult.fields)
