@@ -58,6 +58,7 @@ I tre flussi devono poter essere testati e distribuiti separatamente.
 **VIN-03 — Standard verificato.** Non assumere che XML sintatticamente valido sia ACBF valido: eseguire una reale validazione XSD, risoluzione riferimenti immagini, controlli semantici e verifica di apertura con almeno un viewer indipendente.
 
 **VIN-04 — Modularità.** Parser/serializer, importatori archivi, localizzazione dei testi, riconoscimento OCR, valutazione qualità, traduzione, batch e interfacce non devono essere un monolite. Usare contratti espliciti versionati.
+
 **VIN-05 — Elaborazione locale come base.** Il prodotto deve svolgere almeno consumo, validazione, export, correzione e OCR locale senza autenticazione ChatGPT. L'accesso a modelli remoti è facoltativo e attivato dall'utente.
 
 **VIN-06 — Niente servizio AI pubblico.** Non è in programma un proxy pubblico, un servizio commerciale di inferenza, la vendita o condivisione di un abbonamento ChatGPT. Il futuro server è **software open source self-hosted, controllato dall'utente**; funziona anche senza servizi OpenAI.
@@ -117,6 +118,7 @@ I tre flussi devono poter essere testati e distribuiti separatamente.
 - **FMT-09 [P1]** Export atomico: scrivere su file temporaneo, validare, poi sostituire/creare la destinazione; possibilità di annullamento e backup configurabile.
 
 ### 5.3 Collegamento immagini e packaging
+
 L'ACBF può riferirsi a file esterni o essere distribuito con immagini in un contenitore compatibile. Il progetto deve registrare e testare **quale modalità** usa per ciascun output. Il percorso di una pagina non deve diventare ambiguo per differenze di separatori, encoding, maiuscole/minuscole, nomi ripetuti o spostamento della raccolta. Gli originali devono rimanere recuperabili anche senza ACBF-inator.
 
 ## 6. Importazione e conservazione degli originali (P0/P1)
@@ -175,7 +177,8 @@ Ogni provider OCR deve dichiarare: nome/versione, modello e checksum, lingue sup
 - **TRA-03** Conservare il testo originale; reimport/export non devono cancellare traduzioni già presenti.
 - **TRA-04** Consentire provider indipendenti (eventualmente locali oppure autorizzati da utente via SIWC), selezione lingua e glossario di contesto.
 - **TRA-05** Permettere correzione manuale e ripresa dei job per area/capitolo, con controllo di allineamento delle traduzioni.
-- **TRA-06** Offrire preview confrontabile originale/tradotto senza inpainting obbligatorio o rendering permanente delle immagini.- **TRA-07** Trattare il testo dei fumetti come contenuto non fidato nei prompt verso modelli: evitare che istruzioni presenti nell'opera alterino task, processi o accessi.
+- **TRA-06** Offrire preview confrontabile originale/tradotto senza inpainting obbligatorio o rendering permanente delle immagini.
+- **TRA-07** Trattare il testo dei fumetti come contenuto non fidato nei prompt verso modelli: evitare che istruzioni presenti nell'opera alterino task, processi o accessi.
 
 ## 10. Desktop: CLI, GUI, batch e operatività (P1/P2)
 
@@ -234,6 +237,7 @@ Si può iniziare senza database: manifest locale per checkpoint dei job, indici 
 - **SRV-07** La gestione delle traduzioni e delle collezioni è locale al server dell'utente. Nessun sistema centralizzato di condivisione ACBF, sincronizzazione tra utenti o servizio pubblico è richiesto nella prima release.
 
 **Contratti di interoperabilità da progettare, non presunti:** listing di collezioni/capitoli, localizzazione e download ACBF, accesso immagini con hash/ETag, lingue disponibili, aggiornamenti e autorizzazioni. Preferire API/OPDS già idonei dove supportati; non promettere plugin interni per server che forniscono soltanto API.
+
 ## 13. Reader Android ACBF-native derivato da Mihon (P3)
 
 Il reader è un **prodotto separato** che riutilizza dati e contratti ACBF-inator; non è prerequisito per il desktop. Un fork Mihon minimale è preferito alla perdita di funzionalità interattive. Rispettare licenza e linee guida upstream (nome, icona, `applicationId`, aggiornamenti, analytics).
@@ -293,7 +297,8 @@ Il reader è un **prodotto separato** che riutilizza dati e contratti ACBF-inato
 ### M0 — Specifica e test corpus (issue #2, #13; dipende da #1)
 
 - Pin XSD ufficiale con versione/commit, verificare licenze; raccogliere fixture con diritti chiari.
-- Stabilire test suite `validate`, threat model di base, convenzioni del repository, CI minima.- **Uscita:** validatore eseguibile su fixture ACBF valide e volutamente invalide; report dei risultati, nessun test falso/di sola intenzione.
+- Stabilire test suite `validate`, threat model di base, convenzioni del repository, CI minima.
+- **Uscita:** validatore eseguibile su fixture ACBF valide e volutamente invalide; report dei risultati, nessun test falso/di sola intenzione.
 
 ### M1 — Core ACBF e import (issue #3, #4)
 
@@ -352,7 +357,8 @@ acbf-inator/
 - `parse_acbf(document) → domain_model + parse_diagnostics`;
 - `validate_acbf(document, source_assets) → xsd_status + semantic_status + detailed_errors`;
 - `detect_regions(page, reading_direction) → frames + text_areas + uncertainty`;
-- `recognize(crops, language_hint, provider) → source_text + provenance + diagnostics`;- `translate(layer, target_language, provider) → translated_layer + unresolved_items`;
+- `recognize(crops, language_hint, provider) → source_text + provenance + diagnostics`;
+- `translate(layer, target_language, provider) → translated_layer + unresolved_items`;
 - `serialize_acbf(domain_model, target) → artifact + validation_report`.
 
 Le firme sono illustrative; definire tipi concreti, error model, versionamento e cancellazione durante la prima PR tecnica.
@@ -411,7 +417,8 @@ L'AI di sviluppo **non deve cercare di costruire immediatamente tutte le funzion
 
 1. **Standard ACBF:** https://github.com/ACBF-Advanced-Comic-Book-Format/ACBF
 2. **ACBF Viewer:** https://github.com/ACBF-Advanced-Comic-Book-Format/ACBF-Viewer
-3. **MiniCPM-OCR:** https://github.com/OpenBMB/MiniCPM-OCR4. **MiniCPM-OCR Jev:** https://github.com/OpenBMB/MiniCPM-OCR/blob/main/docs/minicpm_ocr_jev_en.md
+3. **MiniCPM-OCR:** https://github.com/OpenBMB/MiniCPM-OCR
+4. **MiniCPM-OCR Jev:** https://github.com/OpenBMB/MiniCPM-OCR/blob/main/docs/minicpm_ocr_jev_en.md
 5. **Manga OCR:** https://github.com/kha-white/manga-ocr
 6. **PaddleOCR:** https://github.com/PaddlePaddle/PaddleOCR
 7. **Surya:** https://github.com/datalab-to/surya
