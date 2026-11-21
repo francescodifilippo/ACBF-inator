@@ -50,6 +50,8 @@ Standard ACBF remains the durable interchange format. Rendered translations may 
 
 ## Project documents
 
+- [Software requirements v1.0 (Italiano)](docs/ACBF-INATOR-REQUIREMENTS-v1.0.md)
+
 - [Architecture and decisions](docs/ARCHITECTURE.md)
 - [OCR alternatives and evaluation](docs/OCR_RESEARCH.md)
 - [Sign in with ChatGPT integration](docs/SIWC_INTEGRATION.md)
